@@ -1,99 +1,31 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Blog Locations</title>
-    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-    <link href="https://api.mapbox.com/mapbox-gl-js/v3.1.0/mapbox-gl.css" rel="stylesheet">
-    <script src="https://api.mapbox.com/mapbox-gl-js/v3.1.0/mapbox-gl.js"></script>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-        }
-
-        #map {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 100%;
-        }
-
-        .popup {
-            max-width: 300px;
-        }
-
-        .popup img {
-            width: 100%; /* Ensure the image does not exceed the width of its container */
-            height: auto;
-            max-width: 100%;
-            max-height: 150px;
-            clear:both;
-            display: inline-block;
-        }
-
-        /* Adjust max-height as needed */
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Maps</title>
 </head>
-
 <body>
-    <!-- Load the `mapbox-gl-geocoder` plugin. -->
-    <script
-        src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
-    <link rel="stylesheet"
-        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css"
-        type="text/css">
+    <h1>List of Maps Used</h1>
+    <p>Using this to store maps and host them on the site</p>
+    <ol class="toc" role="list">
+        <li>
+          <a href="Blog-Locations.html">
+            <span class="title">Blog Locations</span>
+          </a>
+        </li>
+        <li>
+          <a href="Lickeen-Forest.html">
+            <span class="title">Lickeen Forest</span>
+          </a>
+        </li>
+    </ol>
 
-    <div id="map"></div>
-    <script>
-        mapboxgl.accessToken = 'pk.eyJ1IjoidGhlLWV4cGxvcmVycy1wbGF5Ym9vayIsImEiOiJjbHFjMWJoZzYwMGh1MmpzYzY5bGpiZzQxIn0.IFrxhVoO1AZ7kHeZu2wH6A';
-        const map = new mapboxgl.Map({
-            container: 'map', // container ID
-            style: 'mapbox://styles/the-explorers-playbook/clrp4zyke005h01pee0m7gfwd',
-            center: [382.324219, 47.842658], // starting position [lng, lat]
-            zoom: 4 // starting zoom
-        });
-        /* 
-Add an event listener that runs
-  when a user clicks on the map element.
-*/
-        map.on('click', (event) => {
-            // If the user clicked on one of your markers, get its information.
-            const features = map.queryRenderedFeatures(event.point, {
-                layers: ['blog-locations'] // replace with your layer name
-            });
-            if (!features.length) {
-                return;
-            }
-            const feature = features[0];
-            /* 
-                Create a popup, specify its options 
-                and properties, and add it to the map.
-              */
-            const popup = new mapboxgl.Popup({ offset: [0, -15] })
-                .setLngLat(feature.geometry.coordinates)
-                .setHTML(
-                    `<div class="popup-content">
-            <p><b>${feature.properties.Country}</b></p>
-                <a href="${feature.properties.Link}">
-                    <img class="popup-image" src="${feature.properties.Image_Link}" alt="Featured Image" style="width: 100%; height: auto; max-height: 150px; object-fit: cover;">
-                </a>
-           <h3><a style="text-decoration: none" href="${feature.properties.Link}">${feature.properties.Title}</a></h3>
-                </div>`
-                )
-                .addTo(map);
-        })
+    <!-- <h2 id="chapter1">A sub-heading</h2>
+      <p>There could be a lot of information here, under the first sub-heading</p>
 
-        // Add the control to the map.
-        map.addControl(
-            new MapboxGeocoder({
-                accessToken: mapboxgl.accessToken,
-                mapboxgl: mapboxgl
-            })
-        );
-    </script>
-
+    <h2 id="chapter2">Another sub-heading</h2>
+      <p>There could be a lot of information here as well, under the second sub-heading</p> -->
+    <footer>the-explorers-playbook</footer>
 </body>
-
 </html>

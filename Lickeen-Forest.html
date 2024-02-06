@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Lickeen Forest</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+        #legend {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: white;
+            padding: 10px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .legend-entry {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .legend-color-box {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        .popup {
+            max-width: 300px;
+        }
+
+        .popup img {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            max-height: 150px;
+            clear: both;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <div id="legend">
+        <div class="legend-entry">
+            <div class="legend-color-box" style="background-color: #135b10;"></div>
+            <div>Castle Rock Loop</div>
+        </div>
+        <div class="legend-entry">
+            <div class="legend-color-box" style="background-color: #1c78ce;"></div>
+            <div>Lickeen Loop</div>
+        </div>
+        <div class="legend-entry">
+            <div class="legend-color-box" style="background-color: #e47ff5;"></div>
+            <div>Kerry LIFE Loop</div>
+        </div>
+        <!-- Add more legend entries as needed -->
+    </div>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoidGhlLWV4cGxvcmVycy1wbGF5Ym9vayIsImEiOiJjbHFjMWJoZzYwMGh1MmpzYzY5bGpiZzQxIn0.IFrxhVoO1AZ7kHeZu2wH6A';
+        const map = new mapboxgl.Map({
+            container: 'map', // container ID
+            style: 'mapbox://styles/the-explorers-playbook/cls93rycj003p01oaaqp6dz72',
+            center: [-9.882910, 52.013000], // starting position [lng, lat]
+            zoom: 15 // starting zoom
+        });
+    </script>
+
+</body>
+
+</html>
