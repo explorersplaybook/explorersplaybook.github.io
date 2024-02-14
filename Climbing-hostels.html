@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Europe's Best Climbing Hostels</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .popup {
+            max-width: 300px;
+        }
+
+        .popup img {
+            width: 100%; /* Ensure the image does not exceed the width of its container */
+            height: auto;
+            max-width: 100%;
+            max-height: 150px;
+            clear:both;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoidGhlLWV4cGxvcmVycy1wbGF5Ym9vayIsImEiOiJjbHFjMWJoZzYwMGh1MmpzYzY5bGpiZzQxIn0.IFrxhVoO1AZ7kHeZu2wH6A';
+        const map = new mapboxgl.Map({
+            container: 'map', // container ID
+            style: 'mapbox://styles/the-explorers-playbook/clslk88s301bv01ql8qjz8799',
+            center: [13.579102, 38.186387], // starting position [lng, lat]
+            zoom: 4 // starting zoom
+        });
+        /* add event listener that runs when user clicks on map element */
+
+        map.on('click', (event) => {
+            // if the user clicked on one of the markers, get it's information.
+            const features = map.queryRenderedFeatures(event.point, {
+                layers: ['climbing-hostels'] //layer name
+            });
+            if (!features.length) {
+                return;
+            }
+            const feature = features[0];
+
+            /* create a popup, specify its options/properties and add it to the map */
+
+            const popup = new mapboxgl.Popup({ offset: [0, -15] })
+                .setLngLat(feature.geometry.coordinates)
+                .setHTML(
+                    `<div class="popup-content">
+            <h2><a style="text-decoration: none" href="${feature.properties.Website}">${feature.properties.Name}</a></h2>
+                <a href="${feature.properties.Website}">
+                    <img class="popup-image" src="${feature.properties.img_link}" alt="Featured Image" style="width: 100%; height: auto; max-height: 150px; object-fit: cover;">
+                </a>
+           <p><a style="text-decoration: none" href="${feature.properties.dir_link}" target="_blank">Directions</a></p>
+                </div>`
+                )
+                .addTo(map);
+        })
+    </script>
+
+</body>
+
+</html>
