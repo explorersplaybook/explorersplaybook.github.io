@@ -92,6 +92,13 @@ Add an event listener that runs
                 mapboxgl: mapboxgl
             })
         );
+        map.addControl(new mapboxgl.FullscreenControl({
+            container: document.querySelector('body') 
+        }));
+        map.addControl(new mapboxgl.NavigationControl({
+            showCompass: false
+        }))
+
     </script>
 
 </body>

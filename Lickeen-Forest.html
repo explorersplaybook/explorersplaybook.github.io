@@ -23,7 +23,7 @@
         #legend {
             position: absolute;
             top: 10px;
-            right: 10px;
+            left: 10px;
             background-color: white;
             padding: 10px;
             border: 1px solid #ccc;
@@ -86,6 +86,8 @@
             center: [-9.882374,52.010107], // starting position [lng, lat]
             zoom: 15 // starting zoom
         });
+//add full screen control to the map specifiying the body as the container to make full screen //
+        map.addControl(new mapboxgl.FullscreenControl({ container: document.querySelector('body')}))
     </script>
 
 </body>
