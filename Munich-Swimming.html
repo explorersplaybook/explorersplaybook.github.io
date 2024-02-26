@@ -71,6 +71,9 @@
                 )
                 .addTo(map);
         })
+        map.addControl(new mapboxgl.FullscreenControl({
+            container: document.querySelector('body') 
+        }))
     </script>
 
 </body>
