@@ -76,10 +76,10 @@ Add an event listener that runs
                 .setHTML(
                     `<div class="popup-content">
             <p><b>${feature.properties.Country}</b></p>
-                <a href="${feature.properties.Link}">
+                <a href="${feature.properties.Link}" target="_blank">
                     <img class="popup-image" src="${feature.properties.Image_Link}" alt="Featured Image" style="width: 100%; height: auto; max-height: 150px; object-fit: cover;">
                 </a>
-           <h3><a style="text-decoration: none" href="${feature.properties.Link}">${feature.properties.Title}</a></h3>
+           <h3><a style="text-decoration: none" href="${feature.properties.Link}" target="_blank">${feature.properties.Title}</a></h3>
                 </div>`
                 )
                 .addTo(map);
