@@ -71,8 +71,11 @@
                 )
                 .addTo(map);
         })
+        map.addControl(new mapboxgl.NavigationControl({
+            showCompass: false
+        }));
         map.addControl(new mapboxgl.FullscreenControl({
-            container: document.querySelector('body') 
+            container: document.getElementById('map')
         }))
     </script>
 
